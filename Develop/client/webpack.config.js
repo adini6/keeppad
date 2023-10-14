@@ -3,9 +3,6 @@ const WebpackPwaManifest = require('webpack-pwa-manifest');
 const path = require('path');
 const { InjectManifest } = require('workbox-webpack-plugin');
 
-
-// TODO: Add and configure workbox plugins for a service worker and manifest file.
-// TODO: Add CSS loaders and babel to webpack.
 module.exports = () => {
   return {
     mode: 'development',
@@ -17,17 +14,24 @@ module.exports = () => {
       filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
     },
+    devtool: 'source-map',
+    devServer: {
+      contentBase: path.join(__dirname, 'dist'),
+      compress: true,
+      port: 8080,
+      hot: true,
+      open: true, 
+    },
     plugins: [
       new HtmlWebpackPlugin({
         template: './src/index.html',
         filename: './index.html'
       }),
       new WebpackPwaManifest({
-        name: 'Your App Name',
-        short_name: 'App',
-        description: 'Your App Description',
+        name: 'Keep Pad',
+        short_name: 'KP',
+        description: 'text editor',
         background_color: '#ffffff',
-        crossorigin: 'use-credentials', 
         icons: [
           {
             src: path.resolve('src/images/logo.png'),
