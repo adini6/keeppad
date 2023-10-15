@@ -24,8 +24,7 @@ module.exports = () => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: './develop/client/index.html',
-        filename: './index.html'
+        template: path.resolve(__dirname, './develop/client/index.html')
       }),
       new WebpackPwaManifest({
         name: 'Keep Pad',
@@ -40,7 +39,8 @@ module.exports = () => {
         ]
       }),
       new InjectManifest({
-        swSrc: './develop/client/src-sw.js',
+        swSrc: './src-sw.js',
+        swDest: 'src-sw.js'
       }),
     ],
     module: {
