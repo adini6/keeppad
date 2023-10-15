@@ -24,7 +24,7 @@ module.exports = () => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, './develop/client/index.html')
+        template: path.resolve(__dirname, 'index.html')
       }),
       new WebpackPwaManifest({
         name: 'Keep Pad',
